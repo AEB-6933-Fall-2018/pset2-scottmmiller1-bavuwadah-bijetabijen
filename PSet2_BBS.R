@@ -68,15 +68,17 @@ ratio <- var2/var1
 
 # b)
 
+e <- resid(reg1)
+
 rho_xk <- ICCest (cluster.factor, x, data = clustered.df.3, alpha = 0.05, CI.type = "S")
 
-rho_u <- ICCest (cluster.factor, y, data = clustered.df.3, alpha = 0.05, CI.type = "S")
+rho_u <- ICCest (cluster.factor, e, data = clustered.df.3, alpha = 0.05, CI.type = "S")
 
 N_g <- 500
 
 vif <- 1 + rho_xk$ICC*rho_u$ICC*(N_g - 1)
 
-# Here, the variance inflation factor is 135.686.
+# Here, the variance inflation factor is 135.2376.
 
 
 # c)
@@ -105,15 +107,17 @@ ratio_c <- var4/var3
 
 # d)
 
+e_d <- resid(reg3)
+
 rho_xk_d <- ICCest (cluster.higher.factor, x, data = clustered.df.3, alpha = 0.05, CI.type = "S")
 
-rho_u_d <- ICCest (cluster.higher.factor, y, data = clustered.df.3, alpha = 0.05, CI.type = "S")
+rho_u_d <- ICCest (cluster.higher.factor, e_d, data = clustered.df.3, alpha = 0.05, CI.type = "S")
 
 N_g <- 500
 
 vif_d <- 1 + rho_xk_d$ICC*rho_u_d$ICC*(N_g - 1)
 
-# Here, the variance inflation factor is 5.858468.
+# Here, the variance inflation factor is 5.816075.
 
 
 
